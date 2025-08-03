@@ -1,2 +1,2 @@
-# oviteck-website
-oviteck-website
+# ovitech-website
+ovitech-website
