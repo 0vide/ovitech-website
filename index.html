@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0v1Tech - Tech Projects & Innovation</title>
+    <title>0v1Tech - LEGO Game Boy & Electronics Projects</title>
+    <meta name="description" content="Build-along with 0v1Tech! LEGO Game Boy ESP32 project, custom PCBs, and electronics. 460+ YouTube subscribers. €90 PCB kits coming soon!">
     <style>
         * {
             margin: 0;
@@ -12,7 +13,7 @@
         }
         
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             line-height: 1.6;
             color: #fff;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
@@ -40,8 +41,6 @@
             z-index: 1;
             pointer-events: none;
         }
-        
-
         
         .container {
             max-width: 1200px;
@@ -176,6 +175,7 @@
             border: 1.5px solid rgba(0, 212, 255, 0.3);
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            margin: 0 10px;
         }
         
         .cta-button:hover {
@@ -183,6 +183,17 @@
             border-color: #00d4ff;
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+        }
+
+        .cta-button.youtube {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff0000;
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+
+        .cta-button.youtube:hover {
+            background: rgba(255, 0, 0, 0.15);
+            border-color: #ff0000;
         }
         
         .projects {
@@ -255,29 +266,29 @@
             color: #ccc;
             line-height: 1.6;
         }
-        
+
         .status {
             display: inline-block;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-top: 1rem;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 12px;
             border: 1px solid;
         }
-        
-        .status.completed {
+
+        .status.active {
             background: rgba(76, 175, 80, 0.2);
             color: #4CAF50;
             border-color: #4CAF50;
             box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
         }
-        
-        .status.in-progress {
-            background: rgba(255, 152, 0, 0.2);
-            color: #FF9800;
-            border-color: #FF9800;
-            box-shadow: 0 0 15px rgba(255, 152, 0, 0.3);
+
+        .status.planning {
+            background: rgba(33, 150, 243, 0.2);
+            color: #2196F3;
+            border-color: #2196F3;
+            box-shadow: 0 0 15px rgba(33, 150, 243, 0.3);
         }
         
         .youtube-section {
@@ -299,24 +310,36 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
-        .coming-soon {
-            background: rgba(255, 107, 107, 0.1);
-            color: #ff6b6b;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 500;
-            font-size: 14px;
-            display: inline-block;
-            margin-top: 1rem;
-            border: 1px solid rgba(255, 107, 107, 0.3);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+
+        .youtube-section p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #ccc;
         }
-        
-        .coming-soon:hover {
-            background: rgba(255, 107, 107, 0.15);
-            border-color: #ff6b6b;
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            display: block;
+        }
+
+        .stat-label {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
         
         .about {
@@ -336,7 +359,7 @@
         .about p {
             font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 1.5rem;
             opacity: 0.9;
             color: #ccc;
         }
@@ -381,6 +404,18 @@
             .logo-image {
                 height: 60px;
             }
+
+            .stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                margin: 10px 5px;
+            }
         }
         
         /* Circuit board pattern overlay */
@@ -401,22 +436,20 @@
     </style>
 </head>
 <body>
-
-    
     <!-- Circuit pattern overlay -->
     <div class="circuit-overlay"></div>
 
     <header>
         <nav class="container">
             <div class="logo-container">
-                <img src="0v1tech-logo.png" alt="0v1Tech" class="logo-image">
+                <img src="0v1tech-logo.png" alt="0v1Tech Logo" class="logo-image">
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#youtube">YouTube</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#shop">Shop</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -425,54 +458,63 @@
         <section id="home" class="hero">
             <div class="container">
                 <h1>Welcome to 0v1Tech</h1>
-                <p>Advanced Tech Projects & Innovation</p>
                 <a href="#projects" class="cta-button">Explore Projects</a>
+                <a href="https://youtube.com/@0v1Tech" target="_blank" class="cta-button youtube">Watch on YouTube</a>
             </div>
         </section>
 
         <div class="container">
             <section id="projects" class="projects">
-                <h2>Current Projects</h2>
+                <h2>Projecten</h2>
                 <div class="project-grid">
-                    <div class="project-card">
-                        <h3>LEGO Gameboy</h3>
-                        <p>Building a fully functional Gameboy using LEGO bricks, ESP32 microcontroller, and custom display. A retro gaming experience in iconic building blocks!</p>
-                    </div>
-                    
-                    <div class="project-card">
-                        <h3>Gameboy Cartridge</h3>
-                        <p>Miniaturized Gameboy built into an actual cartridge form factor. Complete gaming system in the size of a game cartridge!</p>
-                    </div>
-                    
-                    <div class="project-card">
-                        <h3>Custom Dashboard</h3>
-                        <p>Modern LCD dashboard replacing analog car gauges. Real-time data display with custom graphics and CAN bus integration.</p>
+                    <div class="project-card" onclick="window.location.href='lego-gameboy.html'" style="cursor: pointer;">
+                        <h3>LEGO Game Boy</h3>
+                        <p>Een werkende Game Boy gemaakt met LEGO bricks. Van display model naar volledig speelbare retro console.</p>
+                        <span class="status active">🔴 In Ontwikkeling</span>
                     </div>
                 </div>
             </section>
 
-            <section class="youtube-section">
-                <h2>YouTube Channel</h2>
-                <p>Follow my journey as I build and document these advanced tech projects!</p>
-                <div class="coming-soon">Coming Soon</div>
+            <section id="youtube" class="youtube-section">
+                <h2>Volg Mijn Projecten</h2>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <a href="https://youtube.com/@0v1Tech" target="_blank" class="cta-button youtube" style="margin: 0;">
+                            <span style="font-size: 1.2rem;">📺 YouTube</span>
+                        </a>
+                        <span class="stat-label" style="margin-top: 1rem; display: block;">Hoofdkanaal - 460+ subscribers</span>
+                    </div>
+                    <div class="stat-item">
+                        <a href="https://tiktok.com/@0v1tech" target="_blank" class="cta-button" style="margin: 0; background: rgba(0, 0, 0, 0.3); color: #fff; border-color: rgba(255, 255, 255, 0.3);">
+                            <span style="font-size: 1.2rem;">🎵 TikTok</span>
+                        </a>
+                        <span class="stat-label" style="margin-top: 1rem; display: block;">Korte clips</span>
+                    </div>
+                    <div class="stat-item">
+                        <a href="https://instagram.com/0v1tech" target="_blank" class="cta-button" style="margin: 0; background: rgba(193, 53, 132, 0.1); color: #C13584; border-color: rgba(193, 53, 132, 0.3);">
+                            <span style="font-size: 1.2rem;">📸 Instagram</span>
+                        </a>
+                        <span class="stat-label" style="margin-top: 1rem; display: block;">Behind the scenes</span>
+                    </div>
+                </div>
             </section>
 
             <section id="about" class="about">
-                <h2>About 0v1Tech</h2>
-                <p>Passionate about cutting-edge technology, electronics, and building innovative solutions. From retro gaming projects to modern electronics, I love exploring the intersection of creativity and technology. Follow along as I document my builds, share tutorials, and dive deep into advanced maker projects!</p>
+                <h2>Over 0v1Tech</h2>
+                <p>Een Nederlandse maker met een passie voor elektronica, LEGO en retro gaming. In mijn vrije tijd werk ik aan verschillende tech projecten en documenteer ik het proces op YouTube.</p>
+                <p>Van PCB ontwerp tot 3D printen, van programmeren tot bouwen met LEGO - elk project is een nieuwe uitdaging en een kans om te leren.</p>
             </section>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 0v1Tech. Powered by innovation and passion for technology.</p>
+            <p>&copy; 2025 0v1Tech | Built with ⚡ and 🎮 | <a href="https://youtube.com/@0v1Tech" target="_blank" style="color: #00d4ff; text-decoration: none;">YouTube</a></p>
         </div>
     </footer>
 
     <script>
-
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -521,9 +563,9 @@
             observer.observe(card);
         });
 
-        console.log('🚀 0v1Tech website initialized successfully!');
-        console.log('⚡ Powered by advanced web technologies');
-        console.log('🔧 Built for innovation and creativity');
+        console.log('🚀 0v1Tech website initialized!');
+        console.log('🎮 LEGO Game Boy Project');
+        console.log('⚡ Powered by ESP32 & Passion');
     </script>
 </body>
 </html>
