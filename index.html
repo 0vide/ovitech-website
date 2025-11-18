@@ -417,6 +417,18 @@
             .cta-button {
                 margin: 10px 5px;
             }
+
+            /* Fix project card layout for mobile */
+            .project-card[onclick] {
+                grid-template-columns: 1fr !important;
+                text-align: center;
+            }
+
+            .project-card[onclick] > div:last-child {
+                width: 100% !important;
+                max-width: 300px;
+                margin: 1.5rem auto 0 !important;
+            }
         }
         
         /* Circuit board pattern overlay */
