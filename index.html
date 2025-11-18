@@ -467,10 +467,15 @@
             <section id="projects" class="projects">
                 <h2>Projecten</h2>
                 <div class="project-grid">
-                    <div class="project-card" onclick="window.location.href='lego-gameboy.html'" style="cursor: pointer;">
-                        <h3>LEGO Game Boy</h3>
-                        <p>Een werkende Game Boy gemaakt met LEGO bricks. Van display model naar volledig speelbare retro console.</p>
-                        <span class="status active">🔴 In Ontwikkeling</span>
+                    <div class="project-card" onclick="window.location.href='lego-gameboy.html'" style="cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;">
+                        <div>
+                            <h3>Werkende LEGO Game Boy</h3>
+                            <p>LEGO Game Boy mod om echte retrogames te spelen.</p>
+                            <span class="status active">🔴 In Ontwikkeling</span>
+                        </div>
+                        <div style="width: 200px; height: 200px; border-radius: 12px; overflow: hidden; border: 2px solid rgba(0, 212, 255, 0.3); flex-shrink: 0;">
+                            <img src="lego-gameboy-photo.png" alt="LEGO Game Boy" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
                     </div>
                 </div>
             </section>
@@ -486,7 +491,7 @@
                         <span class="stat-label" style="margin-top: 1rem; display: block;">Hoofdkanaal - 460+ subscribers</span>
                     </div>
                     <div class="stat-item">
-                        <a href="https://tiktok.com/@0v1tech" target="_blank" class="cta-button" style="margin: 0; background: rgba(0, 0, 0, 0.3); color: #fff; border-color: rgba(255, 255, 255, 0.3);">
+                        <a href="https://tiktok.com/@0v1tech3" target="_blank" class="cta-button" style="margin: 0; background: rgba(0, 0, 0, 0.3); color: #fff; border-color: rgba(255, 255, 255, 0.3);">
                             <span style="font-size: 1.2rem;">🎵 TikTok</span>
                         </a>
                         <span class="stat-label" style="margin-top: 1rem; display: block;">Korte clips</span>
@@ -500,11 +505,6 @@
                 </div>
             </section>
 
-            <section id="about" class="about">
-                <h2>Over 0v1Tech</h2>
-                <p>Een Nederlandse maker met een passie voor elektronica, LEGO en retro gaming. In mijn vrije tijd werk ik aan verschillende tech projecten en documenteer ik het proces op YouTube.</p>
-                <p>Van PCB ontwerp tot 3D printen, van programmeren tot bouwen met LEGO - elk project is een nieuwe uitdaging en een kans om te leren.</p>
-            </section>
         </div>
     </main>
 
